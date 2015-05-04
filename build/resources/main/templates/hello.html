@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE,chrome=1" />
+
+<meta name="viewport" content="user-scalable=yes, width=858, target-densityDpi=device-dpi" />
+<title>음악이 필요한 순간</title>
+
+<script type="text/javascript">
+var httpWww = "http://www.melon.com";
+var httpsWww = "https://www.melon.com";
+var POC_ID = "WP10";
+</script>
+<script type="text/javascript" src="/resource/script/web/common/jquery-1.9.1.min.js"></script>
+<link rel="stylesheet" href="https://static.melon.co.kr/static/web/resource/style/w1/s9/y/1o84n6os6ex.css" type="text/css" />
+
+<script type="text/javascript" src="/resource/script/web/member/melonweb_member_external.js"></script>
+<script type="text/javascript" src="https://static.melon.co.kr/static/web/resource/script/w1/dr/w/b02coh9czt.js"></script>
+<script type="text/javascript" src="https://static.melon.co.kr/static/web/resource/script/w1/1u/5/unpmuzzi9t.js"></script>
+</head>
+
+
+<body>
+<div id="wrap">
+	<!-- contents -->
+<form th:action="@{/login}" name="login_form" method="post">
+<div id="header">
+<!-- GNB -->
+	<div id="gnb">
+		<div class="gnb_mem">
+			<div>
+				<!-- <h1><a href="javascript:MemberEtc.goPage('MAIN');" title="Melon 메인 - 페이지 이동"><img src="https://static.melon.co.kr/resource/image/web/member/img_logo.png" width="85" height="32" alt="Melon" /></a></h1> -->
+				<!--<h2>회원정보</h2>-->
+			</div>
+		</div>
+</div>
+<!-- //GNB -->
+</div>
+
+	<div id="cont_wrap" class="clfix">
+			<div id="conts_section">
+<!-- contents -->
+				<div id="conts">
+					<div class="cont_login">
+						<h2 class="f_tit">환영합니다</h2>
+						<div class="wrap_login">
+									<div class="form">
+										<div class="wrap_login_form">
+												<h1 th:inline="text">[[${#httpServletRequest.remoteUser}]]!</h1>
+										</div>
+										<div class="wrap_login_mem">
+											<form th:action="@{/logout}" method="post">
+											<input type="submit" title="로그아웃 - 페이지 이동" class="btn btn_base02" value="로그아웃"/>
+											</form>
+										</div>
+									</div>
+						</div>
+					</div>
+				</div>
+<!-- //contents -->
+			</div>
+	</div>
+</form>
+
+	<!-- //contents -->
+</div>
+</body>
+</html>

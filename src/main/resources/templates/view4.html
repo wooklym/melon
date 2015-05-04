@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE,chrome=1" />
+
+<meta name="viewport" content="user-scalable=yes, width=858, target-densityDpi=device-dpi" />
+<title>음악이 필요한 순간</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script type="text/javascript">
+function change(type) {
+	if(type == 'review') {
+		$("div.review").css('display', '');
+		$("div.inlist").css('display', 'none');
+		$("li.inlist").css('color', '#9C9C9C');
+		$("li.review").css('color', '#94D143');
+	} else if(type == 'inlist') {
+		$("div.review").css('display', 'none');
+		$("div.inlist").css('display', '');
+		$("li.inlist").css('color', '#94D143');
+		$("li.review").css('color', '#9C9C9C');
+	}
+}
+</script>
+</head>
+<body style="background-color:#282828;">
+<div id="wrap">
+	<div style="color:white;font-size:40pt; padding-left:40px;">
+		<!-- <span style="font-size:20pt;">←</span> -->
+		<span>Somebody 4 Life</span>
+	</div>
+	<div>
+		<ul style="color:#9C9C9C; font-size:20pt; font-weight:bold; list-style-type:none;">
+			<li class="inlist" style="float:left; color:#94D143; cursor:pointer;" onclick="change('inlist')">수록곡</li>
+			<li class="review" style="float:left; padding-left:30px; cursor:pointer;" onclick="change('review')">앨범소개</li>
+			<li style="float:left; padding-left:30px; cursor:pointer;">앨범리뷰</li>
+		</ul>
+	</div>
+	<div style="clear:both; padding-left:40px; padding-top:30px;">
+		<div style="width:280px;float:left;">
+			<div style="height:280px;background-color:white; overflow:hidden;">
+				<img src="http://image.melon.co.kr/cm/album/images/023/12/957/2312957_500.jpg" alt="" style="width:280px; height:280px;"/>
+			</div>
+			<div style="background-color:#323232; height:300px; padding:15px;">
+				<div style="clear:both;">
+					<span style="color:white;font-size:15pt;font-weight:bold;">디아크</span>
+					<span style="float:right;font-size:15pt;font-weight:bold;color:#797979;">></span>
+				</div>
+				<div style="color:#B9B9B9;font-size:11pt; padding-top:10px;">
+					<span>2015.04.10</span><br/>
+					<span>R&amp;B / Soul</span>
+				</div>
+				<div style="padding-top:20px;">
+					<span style="color:white;font-size:17pt;font-weight:bold;">좋아요</span>
+					<span style="color:#91BC36;font-size:13pt;font-weight:bold;">727</span>
+				</div>
+			</div>
+		</div>
+		<div class="review" style="width:375px; float:left; padding-left:30px; color:#BABABA; display:none;">
+			<span>SBS 서바이벌 오디션 [K팝스타 시즌4 TOP 2] 생방송 경연곡 출시!!!<br/>
+			K팝 스타 시즌 4!!! 무슨 일이 벌어질지 아무도 모른다!!<br/><br/>
+			이전 시즌보다도 더 업그레이드 된 실력과 외모를 갖춘 참가자들이 대거 출현하여 큰 이슈를 불러 일으키고 있는 [K팝 스타 시즌4]<br/>
+			K팝 스타 시즌 4의 생방송 무대! 치열한 경쟁을 뚫고 올라온 TOP2의 생방송 경연곡 중 2곡이 먼저 출시 된다.<br/><br/>
+			케이티김의 너뿐이야 (박진영)<br/><br/>
+			정승환의 만약에 말야 (노을 전우성)<br/><br/>
+			4월 12일 생방송 무대가 끝난 직후에 공개된 이번 케이티김, 정승환의 TOP.2 경영곡 이외에, TOP.2의 미션 경연곡이 수록되는 [K팝 스타 시즌 4 TOP2 (Part.2)]는 오는 4월 15일 음원사이트를 통해 공개 된다.<br/><br/><br/><br/>
+			*발매사 : (주)로엔엔터테인먼트<br/>
+			*발매사 : (주)SBS콘텐츠허브<br/>
+			</span>
+		</div>
+		
+		<div class="inlist" style="float:left; padding-left:30px;">
+			<div style="background-color:#323232; width:330px; height:100px; padding-left:25px; padding-top:10px; margin-bottom:10px;">
+				<div style="float:left; width:15px;">
+					<span style="color:white; font-size:20pt; font-weight:bold;">1</span>
+				</div>
+				<div style="float:left; padding-left:25px;">
+					<div style="padding-bottom:10px;">
+						<span style="color:white; background-color:#9B9B9B; font-size:8pt; border-radius:10px; padding-left: 7px; padding-right:7px; padding-bottom:2px; padding-top:2px;font-wegiht:bold;">TITLE</span>
+						<span style="color:white; font-size:17pt; font-weight:bold;">빛 (The Light)</span>
+					</div>
+					<div><span style="color:#B3B3B3; font-weight:bold;">디아크</span></div>
+					<div><span style="color:#676767; font-weight:bold;">Somebody 4 Life</span></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>
