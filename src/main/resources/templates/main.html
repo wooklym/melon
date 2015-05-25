@@ -118,10 +118,10 @@
 
 			
 			<div class="responsive-mask">
-				<div style="height:50px; line-height:50px; color:#FFFFFF; font-size:20px; font-weight: bold;">슬픔</div>
+				<div style="height:50px; line-height:50px; color:#FFFFFF; font-size:20px; font-weight: bold;">최신음악</div>
 			</div>
 			<div class="responsive-mask">
-				<div id="movie-cards" class="clearfix" style="position: relative;">
+				<div id="movie-cards" class="clearfix" style="position: relative; width:720px;">
 					<div
 						class="movie-card size-1x1 poster-type base_movie  user-action-mb7xbv card grid-1 hei-1"
 						style="position: relative; float: left">
@@ -155,148 +155,6 @@
 						</div>
 
 					</div>
-					
-					<div
-						class="movie-card size-1x1 poster-type base_movie  user-action-mlvarw card grid-1 hei-1"
-						style="position: relative; float: left">
-						<div class="poster-wrapper">
-						<div class="poster-over" style="">
-						
-							<div class="title"  id="view3">불후의 명곡</div>
-						</div>
-							<img class="poster"
-								src="http://cdnimg.melon.co.kr/cm/album/images/023/13/613/2313613.jpg"
-								width="100%" />
-
-
-							<div class="top-gradation"></div>
-
-
-
-							<div class="detail-opener gradation"></div>
-							<div class="bottom"></div>
-
-						</div>
-
-
-
-						<div class="reason">
-							<div class="front predicted_rating" style="display: block;">
-								<span class="text">Various Artists</span>
-							</div>
-
-						</div>
-
-
-					</div>
-					<div
-						class="movie-card size-1x1 poster-type base_movie  user-action-mowftc card grid-1 hei-1"
-						style="position: relative; float: left;">
-						<div class="poster-wrapper">
-						<div class="poster-over" style="">
-						
-							<div class="title"  id="view4">Somebodyu 4 Life</div>
-						</div>
-							<img class="poster"
-								src="http://cdnimg.melon.co.kr/cm/album/images/023/12/957/2312957.jpg"
-								width="100%" />
-
-
-							<div class="top-gradation"></div>
-
-
-
-							<div class="detail-opener gradation"></div>
-							<div class="bottom"></div>
-
-						</div>
-
-
-
-						<div class="reason">
-							<div class="front predicted_rating" style="display: block;">
-								<span class="text">디아크</span>
-							</div>
-
-						</div>
-
-
-					</div>
-					<div
-						class="movie-card size-1x1 poster-type base_movie  user-action-maqtip card grid-1 hei-1"
-						style="position: relative; float: left;">
-						<div class="poster-wrapper">
-						<div class="poster-over" style="">
-						
-							<div class="title"  id="view5">착하지 않은 여자들</div>
-						</div>
-							<img class="poster"
-								src="http://cdnimg.melon.co.kr/cm/album/images/023/13/439/2313439.jpg"
-								width="100%" />
-
-
-							<div class="top-gradation"></div>
-
-
-
-							<div class="detail-opener gradation"></div>
-							<div class="bottom"></div>
-
-						</div>
-
-
-
-						<div class="reason">
-							<div class="front predicted_rating" style="display: block;">
-								<span class="text">포스트맨(Postmen)</span>
-							</div>
-
-						</div>
-
-
-					</div>
-					<div
-						class="movie-card size-1x1 poster-type base_movie  user-action-m0gk77 card grid-1 hei-1"
-						style="position: relative; float: left;">
-						<div class="poster-wrapper">
-						<div class="poster-over" style="">
-						
-							<div class="title"  id="view6">나는 가수다 시즌3</div>
-						</div>
-							<img class="poster"
-								src="http://cdnimg.melon.co.kr/cm/album/images/023/13/612/2313612.jpg"
-								width="100%" />
-
-
-							<div class="top-gradation"></div>
-
-
-
-							<div class="detail-opener gradation"></div>
-							<div class="bottom"></div>
-
-						</div>
-
-
-
-						<div class="reason">
-							<div class="front predicted_rating" style="display: block;">
-								<span class="text">Various Artists</span>
-							</div>
-
-						</div>
-
-
-					</div>
-
-				</div>
-			</div>
-			<div class="responsive-mask">
-				<div style="height:50px; line-height:50px; color:#FFFFFF; font-size:20px; font-weight: bold;">우울</div>
-			</div>
-			<div class="responsive-mask">
-				<div id="movie-cards" class="clearfix" style="position: relative;">
-					
 					<div
 						class="movie-card size-1x1 poster-type base_movie  user-action-mmliep card grid-1 hei-1"
 						style="position: relative; float: left">
@@ -463,7 +321,14 @@
 					</div>
 
 				</div>
-			</div>			
+
+				<div class="chart">
+					<div class="list_wrap" style="display: block; left:750px; top:115px;">
+						<ul th:utext="${chart}"></ul>
+					</div>
+				</div>
+
+			</div>
 		</div>
 
 	</div>

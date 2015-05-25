@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class MainController {
 	
-	@RequestMapping("/list")
+	@RequestMapping("/")
 	public String main(Locale locale, HttpServletRequest request, Model model) {
 		
 		
@@ -32,6 +32,6 @@ public class MainController {
 		      e.printStackTrace();
 		}
 		
-		return "list";
+		return "main";
 	}
 }
