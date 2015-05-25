@@ -7,6 +7,16 @@
 
 <meta name="viewport" content="user-scalable=yes, width=858, target-densityDpi=device-dpi" />
 <title>음악이 필요한 순간</title>
+
+<style type="text/css">
+	.review-item {
+		cursor:pointer;
+	}
+	.review-item:hover {
+		opacity:0.5;
+	}
+</style>
+
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script type="text/javascript">
 function change(type) {
@@ -35,15 +45,85 @@ function change(type) {
 }
 
 $(function() {
-   $("#review-register").click(function() {
-       var title = $("#review-title").val();
-       var content = $("#review-content").val();
-      var ri = $(".review-item").clone();
-      ri.find(".title").text(title);
-      ri.find(".content").text(content);
-      $("#review_list").prepend(ri);
-      $("textarea#review-text").val(''); 
-   })
+	
+	$(".review-item").click(function() {
+		var $pop = $("#review-view-pop").clone();
+		var $overlay = $("#overlay");
+		
+		$overlay.css("width", $(document).width());
+		$overlay.css("height", $(document).height());
+		
+		$overlay.show();
+		
+		$overlay.click(function() {
+			$pop.fadeOut(function() {
+				$pop.remove();
+			});
+			$overlay.fadeOut();
+		});
+		
+		$pop.css("top", ($(document).height() - $pop.height())/2);
+		$pop.css("left", ($(document).width() - $pop.width())/2);
+		
+		$("body").prepend($pop);
+		$pop.show();
+		
+		$pop.find("#comment-write").click(function() {
+			$table = $pop.find("#comment-table");
+			$tr = $table.find("tr").first().clone();
+			$tr.find(".content").text( $("#comment-content").val() );
+			$tr.find(".user").text( "글쓴이" );
+			$tr.find(".date").text( "2015.02.02" );
+			
+			$table.append($tr);
+			
+			$('#comment-scroll').scrollTop($('#comment-scroll')[0].scrollHeight);
+			
+			$("#comment-content").val("");
+		});
+		
+	});
+	
+	$("#review-pop-open").click(function() {
+		var $pop = $("#review-write-pop").clone();
+		var $overlay = $("#overlay");
+		
+		$overlay.css("width", $(document).width());
+		$overlay.css("height", $(document).height());
+		
+		$overlay.show();
+		
+		$overlay.click(function() {
+			$pop.fadeOut(function() {
+				$pop.remove();
+			});
+			$overlay.fadeOut();
+		});
+		
+		$pop.css("top", ($(document).height() - $pop.height())/2);
+		$pop.css("left", ($(document).width() - $pop.width())/2);
+		
+		$("body").prepend($pop);
+		$pop.show();
+		
+		$("#review-register").unbind();
+		$("#review-register").click(function() {
+			
+			$pop.fadeOut(function() {
+				$pop.remove();
+			});
+			$overlay.fadeOut();
+			
+		      var title = $("#review-title").val();
+		      var content = $("#review-content").val();
+		      var ri = $(".review-item").first().clone();
+		      ri.find(".title").text(title);
+		      ri.find(".content").text(content);
+		      $("#review_list").prepend(ri);
+		      $("textarea#review-text").val(''); 
+		});
+	});
+	
 });
 </script>
 </head>
@@ -65,7 +145,7 @@ $(function() {
          <div style="height:280px;background-color:white; overflow:hidden;">
             <img src="http://image.melon.co.kr/cm/album/images/023/13/562/2313562_500.jpg" alt="" style="width:280px; height:280px;"/>
          </div>
-         <div style="background-color:#323232; height:300px; padding:15px;">
+         <div style="background-color:#323232; height:340px; padding:15px;">
             <div style="clear:both;">
                <span style="color:white;font-size:15pt;font-weight:bold;">Various Artists</span>
                <span style="float:right;font-size:15pt;font-weight:bold;color:#797979;">></span>
@@ -121,25 +201,132 @@ $(function() {
          </div>
       </div>
       <div class="review" style="float:left; padding-left:30px; display:none;">
-         <div style="height:550px;" id="review_list">
-            <div  class="review-item" style="background-color:#323232; width:300px; height:100px; padding-top:10px; margin-bottom:10px;">
+         <div style="height:650px;" id="review_list">
+            <div  class="review-item" style="background-color:#323232; width:300px; height:200px; padding-top:10px; margin-bottom:10px;">
                <div style="float:left; padding-left:25px;padding-right:25px;">
-                  <div style="padding-bottom:10px;">
+                  <div style="height:50px;">
                      <span class="title" style="color:white; font-size:17pt; font-weight:bold;">개인적으로 가사가</span>
                   </div>
-                  <div><span class="content" style="color:#B3B3B3; font-weight:bold; width:250px; height:10px;">개인적으로 가사가 너무 자극적이네요. 후렴구도 좋고...</span></div>
+                  <div style="height:100px;"><span class="content" style="color:#B3B3B3; font-weight:bold;">개인적으로 가사가 너무 자극적이네요. 후렴구도 좋고...</span></div>
+                  <div class="username" style="bottom:0px; left:0px; color:#B3B3B3; font-weight:bold;">
+                  	누구누구 | 2015.01.01
+                  </div>
                </div>
             </div>
          </div>
-         <div>
-            <div style="position:absolute; top:100px; right:20px;">
-            <span style="color:#FFFFFF; font-size:15px; font-weight: bold;">제목 : </span><input type="text" id="review-title" style="width:200px; height:20px; display: block;" /> <br />
-            <span style="color:#FFFFFF; font-size:15px; font-weight: bold;">내용 : </span><textarea id="review-content" style="width:200px; height: 300px; display: block;" ></textarea> <br />
-            <button id="review-register" style="width:60px; height:30px; border-radius: 10px;">쓰기</button>
-            </div>
+         <div style="position:absolute; top:100px; right: 30px;">
+         	<button id="review-pop-open"
+						style="width: 60px; height: 30px; border-radius: 10px;">글쓰기</button>
          </div>
       </div>
    </div>
 </div>
+
+<div id="review-write-pop"
+	style="position: absolute; width: 300px; height: 300px; background-color: #323232; z-index: 100; display:none;">
+	<div style="width: 100%; height: 100%;">
+		<table style="padding: 10px; width:100%; height:100%;">
+			<tr>
+				<td><span
+					style="float: left; color: #FFFFFF; font-size: 15px; font-weight: bold;">제목:
+				</span></td>
+				<td><input type="text" id="review-title"
+					style="float: left; width: 100%; height: 20px; display: block;" /></td>
+			</tr>
+			<tr>
+				<td><span
+					style="color: #FFFFFF; font-size: 15px; font-weight: bold;">내용
+						: </span></td>
+				<td><textarea id="review-content"
+						style="width: 100%; height: 200px; display: block;"></textarea></td>
+			</tr>
+			<tr>
+				<td colspan="2" style="text-align:center;">
+					<button id="review-register"
+						style="width: 60px; height: 30px; border-radius: 10px;">등록</button>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+<div id="review-view-pop" style="position: absolute; width: 400px; height: 500px; background-color: #323232; z-index: 100; display:none;">
+	<div style="padding:10px;">
+		<div style="color:white; font-size:30px; padding: 0 0 10px 0;">제목</div>
+        <div style="vertical-align:center; height:70px;"><span class="content" style="color:#B3B3B3; font-weight:bold;">개인적으로 가사가 너무 자극적이네요. 후렴구도 좋고... 이런 좋은 노래가 널리 퍼져야 하는데요.</span></div>
+        <div class="username" style="bottom:0px; left:0px; color:#B3B3B3; font-weight:bold;">
+        	누구누구 | 2015.01.01
+        </div>
+        <div id="comment-scroll" style="height:245px; overflow-y:scroll;">
+	        <table id="comment-table" style="margin: 20px 0 0 0;">
+	        	<colgroup>
+	        		<col width="80%" />
+	        		<col width="*" />
+	        	</colgroup>
+	        	<tr>
+	        		<td>
+				        <div style="background-color:#232323; padding:10px;">
+				        	<span class="content" style="color:#B3B3B3; font-weight:bold;">개인적으로 가사가 너무 자극적이네요. 후렴구도 좋고... 이런 좋은 노래가 널리 퍼져야 하는데요.</span>
+				        </div>
+	        		</td>
+	        		<td>
+	        			<div class="writer-date" style="color:#B3B3B3; font-weight:bold;">
+	        				<div class="user">누구누구</div>
+	        				<div class="data">2015.01.01</div>
+	        			</div>
+	        		</td>
+	        	</tr>
+	        	<tr>
+	        		<td>
+				        <div style="background-color:#232323; padding:10px;">
+				        	<span class="content" style="color:#B3B3B3; font-weight:bold;">개인적으로 가사가 너무 자극적이네요. 후렴구도 좋고... 이런 좋은 노래가 널리 퍼져야 하는데요.</span>
+				        </div>
+	        		</td>
+	        		<td>
+	        			<div class="writer-date" style="color:#B3B3B3; font-weight:bold;">
+	        				<div class="user">누구누구</div>
+	        				<div class="data">2015.01.01</div>
+	        			</div>
+	        		</td>
+	        	</tr>
+	        	<tr>
+	        		<td>
+				        <div style="background-color:#232323; padding:10px;">
+				        	<span class="content" style="color:#B3B3B3; font-weight:bold;">개인적으로 가사가 너무 자극적이네요. 후렴구도 좋고... 이런 좋은 노래가 널리 퍼져야 하는데요.</span>
+				        </div>
+	        		</td>
+	        		<td>
+	        			<div class="writer-date" style="color:#B3B3B3; font-weight:bold;">
+	        				<div class="user">누구누구</div>
+	        				<div class="data">2015.01.01</div>
+	        			</div>
+	        		</td>
+	        	</tr>
+	        	<tr>
+	        		<td>
+				        <div style="background-color:#232323; padding:10px;">
+				        	<span class="content" style="color:#B3B3B3; font-weight:bold;">개인적으로 가사가 너무 자극적이네요. 후렴구도 좋고... 이런 좋은 노래가 널리 퍼져야 하는데요.</span>
+				        </div>
+	        		</td>
+	        		<td>
+	        			<div class="writer-date" style="color:#B3B3B3; font-weight:bold;">
+	        				<div class="user">누구누구</div>
+	        				<div class="data">2015.01.01</div>
+	        			</div>
+	        		</td>
+	        	</tr>
+	        </table>
+    	</div>
+	        	<div style="margin: 10px 0 0 0;">
+			        	<textarea id="comment-content" class="content" style="float:left; height:50px; width:298px; font-size: 15px; font-weight:bold;"></textarea>
+	        			<button id="comment-write" style="float:left; width:74px; height:55px; padding:5px; font-size:15px; font-weight:bold; border-radius:5px;">댓글 등록</button>
+	        	</div>
+	</div>
+</div>
+
+
+<div id="overlay"
+	style="position: absolute; top: 0; left: 0; background-color: black; opacity: 0.5; z-index: 99; width: 100%; height: 100%; display:none;"></div>
+
 </body>
 </html>

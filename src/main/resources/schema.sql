@@ -5,22 +5,37 @@ create table if not exists user (
 	created_at timestamp default current_timestamp,
 	updated_at timestamp default current_timestamp
 );
+--
+--create table if not exists artist (
+--	pk int primary key auto_increment,
+--	name varchar(255),
+--	created_at timestamp default current_timestamp,
+--	updated_at timestamp default current_timestamp
+--);
+--
+--create table if not exists album (
+--	pk int primary key auto_increment,
+--	artist_pk int,
+--	genre_pk int,
+--	name varchar(255),
+--	created_at timestamp default current_timestamp,
+--	updated_at timestamp default current_timestamp,
+--	foreign key (artist_pk) references artist(pk),
+--	foreign key (genre_pk) references genre(pk)
+--);
+--
+--create table if not exists song (
+--	pk int primary key auto_increment,
+--	artist_pk int,
+--	album_pk int,
+--	genre_pk int,
+--	name varchar(255),
+--	created_at timestamp default current_timestamp,
+--	updated_at timestamp default current_timestamp,
+--	foreign key (artist_pk) references artist(pk),
+--	foreign key (album_pk) references album(pk),
+--	foreign key (genre_pk) references genre(pk)
+--);
 
-create table IF NOT EXISTS article (
- 	id int primary key auto_increment,
-	title varchar(255),
-	content varchar(255),
-	writer varchar(255),
-	tags varchar(255),
-	created_at timestamp default current_timestamp,
-	updated_at timestamp default current_timestamp
-);
 
-create table if not exists tag (
-	id int primary key auto_increment,
-	user_id int,
-	article_id int,
-	root_tag_id int,
-	created_at timestamp default current_timestamp,
-	updated_at timestamp default current_timestamp
-);
+insert into user (email, pw, created_at, updated_at) values (1234, 1234, now(), now());
