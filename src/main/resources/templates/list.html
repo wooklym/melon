@@ -57,6 +57,12 @@
 		$(".poster-over .title").click(function() {
 			location.href = $(this).attr("id");
 		});
+		
+		$(".rank_item").hover(function() {
+			$(this).addClass("active");
+		}, function() {
+			$(this).removeClass("active");
+		});
 	});
 </script>
 
@@ -303,6 +309,13 @@
 					</div>
 
 				</div>
+
+				<div class="chart">
+					<div class="list_wrap" style="display: block; left:750px; top:115px;">
+						<ul th:utext="${chart}"></ul>
+					</div>
+				</div>
+
 			</div>
 		</div>
 
